@@ -24,7 +24,7 @@ if __name__=="__main__":
       print("type exit if u are done")
       a=input("enter your choice: ")
       if a=="1":
-         d=input("enter name: ")
+         d=input("enter name: ").lower()
          if d in g:
             again=input("do u wanna replace the marks? ").lower()
             if again=="no":
@@ -34,11 +34,11 @@ if __name__=="__main__":
                 g.pop(d)
                 mark=[]
                 name.append(d)
-                for i in range(2):
-                    mark1=(int(input("enter marks: ")))
+                for i in range(8):
+                    mark1=(float(input("enter marks: ")))
                     if mark1>100 or mark1<0:
                         print("mark not acpectable")
-                        for l in range(2):
+                        for l in range(8):
                          g.pop(d,mark)
                     else:
                         mark.append(mark1)
@@ -48,11 +48,12 @@ if __name__=="__main__":
          if d not in g:
             mark=[]
             name.append(d)
-            for i in range(2):
-                mark1=(int(input("enter marks: ")))
+            for i in range(8):
+                mark1=(float(input("enter marks: ")))
                 if mark1>100 or mark1<0:
                  print("mark not acpectable")
-                 g.pop(d,mark)
+                 for l in range(8):
+                         g.pop(d,mark)
                 else:
                     mark.append(mark1)
                     g[d]=mark
@@ -60,38 +61,43 @@ if __name__=="__main__":
             print(g)
 
 
-         elif a=="2":
+      elif a=="2":
                 if g:
                   hi = cat.highest(g)
                   print("the highest total was achieved by", hi)
                 else:
                  print("no data")
-         elif a=="3":
+      elif a=="3":
            average1=input("enter name of the student: ")
            if average1 in g:
              hello=cat.average(g[average1])
              print(f"{average1}'s average is {hello}")
+           else:
+              print("no data")
       elif a=="4":
-        total1=input("enter the name: ")
-        if total1 in g:
+          total1=input("enter the name: ")
+          if total1 in g:
            bag= cat.total(g[total1])
            print(f"the total for {total1} is {bag}")
-        else:
+          else:
             print("name not in system")
       elif a=="exit":
-        print("thanks for visting !")
-        break
+          print("thanks for visting !")
+          break
       elif a=="5":
-       if g:    
-        print(f'number of students in system is {len(name)}')
-       else:
+         if g:    
+          print(f'number of students in system is {len(name)}')
+         else:
            print("no data")
       elif a=="6":
-         know=input("enter the name of the student: ")
+         know=input("enter the name of the student: ").lower()
          if know in g:
-            print(g[know])
+            print(f"{know} got {g[know]}")
+         else:
+            print("name not in system ")
       else:
        print("invalid choice please enter the number of your choice")
+       continue
 
 
 
